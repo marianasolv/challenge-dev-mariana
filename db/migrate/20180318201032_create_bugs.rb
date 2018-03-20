@@ -4,7 +4,6 @@ class CreateBugs < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :type
       t.text :description
-      t.binary :solve
 
       t.timestamps
     end
