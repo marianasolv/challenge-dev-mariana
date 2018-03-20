@@ -1,0 +1,12 @@
+<h1><%= @project.name %></h1>
+
+<p>Description: <%= @project.description %></p>
+<p>Budget: <%= @project.budget %></p>
+<p>Start date: <%= @project.start_date %></p>
+<p>Created by: <%= User.find_by(id: @project.user_id).name %></p><br>
+
+<p>
+  <%= link_to "Edit", edit_project_path(@project) %> |
+  <%= link_to 'Delete', project_path(@project), method: :delete, data:{ confirm: 'Are you sure?'} %> | 
+  <%= link_to "Browse Projects", projects_path %>
+</p>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bug.name %>
+</p>
+
+<p>
+  <strong>Bug type:</strong>
+  <%= @bug.bug_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bug.description %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= Project.find_by(id: @bug.project_id).name %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= User.find_by(id: @bug.user_id).name %>
+</p>
+
+<p>
+  <strong>Solve:</strong>
+  <%= bool_to_glyph(@bug.solve) %>
+</p>
+
+<p>
+<%= link_to 'Back', bugs_path %> |
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to "Solve", solve_path(@bug), method: :put %>
+</p>

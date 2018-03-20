@@ -1,0 +1,16 @@
+<div class="login-page">
+  <div class="form">
+
+    <%= form_tag sessions_path do %>
+  
+      <%= email_field_tag :email, params[:email], placeholder: 'email adress', class: 'field' %>
+
+      <%= password_field_tag :password, "", placeholder: "password", class: 'field' %>
+
+      <%= submit_tag "Log in", class: 'form-bnt' %>
+      <p class="message">Not registered? <%= link_to "Sign Up", signup_path %></p>
+
+    <% end %>
+
+  </div>
+</div>

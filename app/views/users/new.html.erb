@@ -1,0 +1,19 @@
+<div class="login-page">
+  <div class="form">
+
+    <%= form_for @user do |f| %>
+    <%= render 'error_messages' %>
+
+      <%= f.text_field :name, placeholder: "name", class: 'field'%>
+
+      <%= f.email_field :email, placeholder: "email address", class: 'field' %>
+
+      <%= f.password_field :password, placeholder: "password", class: 'field' %>
+
+      <%= f.password_field :password_confirmation, placeholder: "confirm password", class: 'field' %>
+
+      <%= f.submit "Sign up", class: 'form-bnt' %>
+      <p class="message">Already registered? <%= link_to "Log In", login_path %> </p>
+    <% end %>
+  </div>
+</div>

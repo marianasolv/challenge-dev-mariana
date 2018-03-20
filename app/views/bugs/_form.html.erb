@@ -1,0 +1,36 @@
+
+<%= form_for(bug) do |f| %>
+
+<% if @bug.errors.any? %>
+<div class="error_messages">
+  <h2>Form is invalid</h2>
+  <ul>
+    <% @bug.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.text_field :name, placeholder: "name" %>
+</div>
+
+<div class="field">
+  <%= f.text_field :bug_type, placeholder: "type" %>
+</div>
+
+<div class="field">
+  <%= f.text_area :description, placeholder: "description" %>
+</div>
+
+<div class="field">
+  <% @current_user = User.find session[:user_id] %>
+  <%= f.select :project_id, Project.where(user_id: @current_user.id).collect {|p| [ p.name, p.id] }, prompt: 'Select a project' %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>

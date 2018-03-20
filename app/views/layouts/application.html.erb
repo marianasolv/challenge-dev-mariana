@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Challenge Dev Mariana</title>
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+	<% if logged_in? %>
+		<div class = 'logout'><%= link_to 'Logout', logout_path, class: 'logout-bnt'%></div>
+	<% else %>
+			<div class = 'page-title'><span>Project Managment Application</span></div>
+	<% end %>
+
+	<div id="flash-messages">
+		<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, id: "flash_#{name}" %>
+		<% end %>
+		<%= yield %>
+	</div>
+
+	<br>
+
+</body>
+</html>

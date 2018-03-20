@@ -1,0 +1,155 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100);
+
+/* Sign Up and Log In pages */
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #3a3a3a;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #494949;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+  .form .form-bnt {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #fe523a;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: #e04631;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #fe523a;
+  text-decoration: none;
+}
+
+.form .register-form {
+  display: block;
+}
+
+ .field {
+  color: #b3b3b3;
+  font-size: 15px;
+ }
+
+body {
+  background: #fcfcfc; 
+  font-family: "Roboto", sans-serif;    
+}
+
+/* Logout button */
+
+.logout-bnt {
+    background-color: #fe523a;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 40px;
+    cursor: pointer;
+}
+
+/* Ttile page at first page */
+
+.page-title > span {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Form erros in signup */
+
+.error_explanation {
+  color: #fe523a;
+  text-align: center;
+  font-size: 12px;
+}
+
+.error_list {
+  color: #b3b3b3;
+}
+
+.error_list > ol li {
+  text-align: left;
+}
+
+.error_list > ol {
+  padding: 13px;
+  margin: 15px 0 15px;
+}
+
+/* Forms for project and bug */
+
+.form-style-1 {
+    max-width: 400px;
+    padding: 0px 12px 10px 20px;
+    font-size: 13px;
+    font-family: "Roboto", sans-serif;
+}
+.form-style-1 li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+.form-style-1 label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+.form-style-1 .field-long{
+    width: 100%;
+}
+.form-style-1 .field-textarea{
+    height: 100px;
+}
+.form-style-1 .submit-bnt {
+    background: #fe523a;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+

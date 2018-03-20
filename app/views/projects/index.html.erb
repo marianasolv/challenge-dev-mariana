@@ -1,0 +1,33 @@
+<h1>Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Budget</th>
+      <th>Start Date</th>
+      <th>Created by</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  	<tbody>
+	<% @projects.each do |project| %>
+		<tr>
+			<td><%= link_to project.name, project %></td>
+			<td><%= project.description %></td>
+			<td><%= project.budget %></td>
+			<td><%= project.start_date %></td>
+			<td><%= User.find_by(id: project.user_id).name %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<br>
+
+<p>
+  <%= link_to "Home", home_path %> |
+  <%= link_to 'New Project', new_project_path %>
+</p>

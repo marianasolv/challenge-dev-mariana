@@ -1,0 +1,21 @@
+<h1>Edit Account</h1>
+
+<%= form_for @user do |f| %>
+
+<!--List and show all error messages-->
+<%= render 'error_messages' %>
+
+<!--Form for editing-->
+<div class="field">
+	<%= f.text_field :name, placeholder: "name" %>
+</div>
+
+<div class="field">
+	<%= f.email_field :email, placeholder: "email address" %>
+</div>
+
+<div class="actions"><%= f.submit %></div>
+
+<% end %>
+
+<%= link_to "Cancel", user_path(@user) %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  cost: 9.99
+  owner: MyString
+  manager: MyString
+  start_date: 2018-03-17
+
+two:
+  name: MyString
+  description: MyText
+  cost: 9.99
+  owner: MyString
+  manager: MyString
+  start_date: 2018-03-17

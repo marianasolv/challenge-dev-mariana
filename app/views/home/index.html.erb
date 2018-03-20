@@ -1,0 +1,19 @@
+<head>
+	<%= stylesheet_link_tag 'sessions' %>
+</head>
+
+<div class = 'nav'>
+<h2> Welcome, <%= @current_user.name %>! <h2>
+</div>
+
+<div class = 'btn account'>
+	<%= link_to 'Manage account', user_path(@current_user.id)%>
+</div>
+
+<div class = 'btn project'>
+	<%= link_to 'Manage projects', projects_path %>
+</div>
+
+<div class = 'btn bug'>
+	<%= link_to 'Manage bugs', bugs_path %>
+</div>
