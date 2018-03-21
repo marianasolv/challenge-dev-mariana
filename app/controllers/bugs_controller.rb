@@ -36,7 +36,8 @@ class BugsController < ApplicationController
       # Send the message to Slack
       notifier.ping message
 
-      redirect_to @bug, notice: 'Bug created successfully!'
+      flash.now.alert = 'Bug created successfully!'
+      redirect_to @bug
     else
       render :new
     end
@@ -56,10 +57,18 @@ class BugsController < ApplicationController
   def update
     @bug = Bug.find(params[:id])
     if @bug.update_attributes(bug_params)
-      redirect_to @bug, notice: 'Bug has been updated!'
+      flash.now.alert = 'Bug has been updated!'
+      redirect_to @bug
     else
       render :edit
     end
+  end
+
+  # DELETE /projects/1
+  def destroy
+    @bug = Project.find(params[:id])
+    @bug.destroy
+    redirect_to bugs_path
   end
 
   # PUT /bugs/1
@@ -89,7 +98,7 @@ class BugsController < ApplicationController
   end
 
   private
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Params allowed to be changed by the user
   def bug_params
     params.require(:bug).permit(:name, :bug_type, :description, :project_id)
   end

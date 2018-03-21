@@ -5,12 +5,12 @@ class ProjectsController < ApplicationController
   def index
   	@projects = Project.all
 
-    # Recover the user in the current session and his id
+    # Recover the user in the current session
     @current_user = User.find session[:user_id]
 
     current_user_id = @current_user.id
 
-    # Only store the projects from the current user
+    # Only show the user's projects
     @projects = Project.where(user_id: current_user_id)
   end
 
@@ -21,8 +21,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    # Create a new project with params from the form
-    @project = Project.new(project_params_create)
+    @project = Project.new(project_params)
 
     # Recover the user in the current session
     @current_user = User.find session[:user_id]
@@ -48,7 +47,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
   	@project = Project.find(params[:id])
-  	if @project.update_attributes(project_params_edit)
+  	if @project.update_attributes(project_params)
   		redirect_to @project, notice: 'Project has been updated!'
   	else
   		render :edit
@@ -68,20 +67,8 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_project
-    @project = Project.find(params[:id])
-  end
-
   # Params allowed to create a new project
   private
-  def project_params_create
+  def project_params
   	params.require(:project).permit(:name, :description, :budget, :start_date)
   end
-
-  # Params allowed to edit a project. Not allowed to change who created the project
-  private
-  def project_params_edit
-    params.require(:project).permit(:name, :description, :budget, :start_date)
-  end
-end

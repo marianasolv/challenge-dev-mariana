@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
 	before_action :save_login_state, :only => [:new, :create]
 	
+	# GET /users/new
 	def new
 		@user = User.new
 	end
 
-	def show
-		# params[:id] comes from the URL: /users/:id
-		@user = User.find(params[:id])
-	end
-
+	# POST /users
 	def create
 		@user = User.new(allowed_params_create)
 		if @user.save
@@ -19,10 +16,18 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# GET /users/1
+	def show
+		# params[:id] comes from the URL: /users/:id
+		@user = User.find(params[:id])
+	end
+
+  	# GET /users/1/edit
 	def edit
 		@user = User.find(params[:id])
 	end
 
+	# PATCH/PUT /users/1
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(allowed_params_edit)
@@ -32,12 +37,13 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# DELETE /users/1
 	def destroy
 		# Destroy current user and all dependencies
 		if session[:user_id]
 			@current_user = User.find session[:user_id]
 
-			# Delete all projects and bugs created by the user
+			# Delete all projects and bugs created by the user 
 			Bug.where(user_id: @current_user.id).each do |bug|
 				bug.destroy
 			end
@@ -60,7 +66,7 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
-	# Params allowed for changing by a user
+	# Params allowed to be changed by the user
 	private
 	def allowed_params_edit
 		params.require(:user).permit(:name, :email)

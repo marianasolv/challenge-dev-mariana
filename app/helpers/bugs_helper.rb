@@ -1,11 +1,11 @@
 module BugsHelper
 
 	# Display the value of attribute solve 
-	def bool_to_glyph(value)
+	def bool_to_str(value)
 		if value == true
-			"True"
+			"Yes"
 		elsif value == false
-			"False"
+			"No"
 		elsif value == nil
 			"Nil"
 		end
