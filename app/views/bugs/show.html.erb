@@ -17,7 +17,7 @@
 <!--Only shows edit/solve/delete if a bug is not yet solved-->
 <% if @bug.solve == false %>
   <%= link_to 'Edit', edit_bug_path(@bug) %> |
-  <!--<%= link_to "Solve", solve_path(@bug) %> |-->
+  <%= link_to "Solve", solve_path(@bug), method: :put %> |
   <%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %>
 <% end %>
 </p>

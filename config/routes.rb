@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :users, :except => [:index]
   resources :projects
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :bugs
+  resources :bugs 
 
-  #put 'solve/:id', to: 'bugs#solve', as: 'solve'
+  put 'solve/:id', to: 'bugs#solve', as: 'solve'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

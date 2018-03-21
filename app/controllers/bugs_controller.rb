@@ -66,7 +66,7 @@ class BugsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
-    @bug = Project.find(params[:id])
+    @bug = Bug.find(params[:id])
     @bug.destroy
     redirect_to bugs_path
   end
