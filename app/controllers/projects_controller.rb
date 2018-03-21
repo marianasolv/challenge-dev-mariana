@@ -58,6 +58,12 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   def destroy
     @project = Project.find(params[:id])
+
+    # Delete all bugs from this project
+    Bug.where(project_id: @project.id).each do |bug|
+      bug.destroy
+    end
+
     @project.destroy
     redirect_to projects_path
   end

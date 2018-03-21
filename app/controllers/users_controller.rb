@@ -37,7 +37,12 @@ class UsersController < ApplicationController
 		if session[:user_id]
 			@current_user = User.find session[:user_id]
 
-			# Delete all projects created by the user
+			# Delete all projects and bugs created by the user
+			Bug.where(user_id: @current_user.id).each do |bug|
+				bug.destroy
+			end
+
+			
 			Project.where(user_id: @current_user.id).each do |project|
 				project.destroy
 			end

@@ -32,6 +32,8 @@
 
 <p>
 <%= link_to 'Back', bugs_path %> |
-<%= link_to 'Edit', edit_bug_path(@bug) %> |
-<%= link_to "Solve", solve_path(@bug), method: :put %>
+<% if @bug.solve == false %>
+  <%= link_to 'Edit', edit_bug_path(@bug) %> |
+  <%= link_to "Solve", solve_path(@bug), method: :put %>
+<% end %>
 </p>

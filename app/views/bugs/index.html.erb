@@ -24,8 +24,6 @@
         <td><%= bug.solve %></td>
         <td><%= Project.find_by(id: bug.project_id).name %></td>
         <td><%= User.find_by(id: bug.user_id).name %></td>
-        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-        <td><%= link_to "Solve", solve_path(bug), method: :put %></td>
       </tr>
     <% end %>
   </tbody>
