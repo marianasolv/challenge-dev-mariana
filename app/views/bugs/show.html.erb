@@ -1,39 +1,23 @@
-<p id="notice"><%= notice %></p>
+<!--Show all bug's attributes-->
+<p>Name: <%= @bug.name %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bug.name %>
-</p>
+<p>Type: <%= @bug.bug_type %></p>
 
-<p>
-  <strong>Bug type:</strong>
-  <%= @bug.bug_type %>
-</p>
+<p>Description: <%= @bug.description %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bug.description %>
-</p>
+<p>Project: <%= Project.find_by(id: @bug.project_id).name %></p>
 
-<p>
-  <strong>Project:</strong>
-  <%= Project.find_by(id: @bug.project_id).name %>
-</p>
+<p>Created by: <%= User.find_by(id: @bug.user_id).name %></p>
 
-<p>
-  <strong>Created by:</strong>
-  <%= User.find_by(id: @bug.user_id).name %>
-</p>
+<p>Solve: <%= bool_to_str(@bug.solve) %></p>
 
-<p>
-  <strong>Solve:</strong>
-  <%= bool_to_str(@bug.solve) %>
-</p>
-
+<!--Links to edit/delete/solve the bug or return to all bugs-->
 <p>
 <%= link_to 'Back', bugs_path %> |
+<!--Only shows edit/solve/delete if a bug is not yet solved-->
 <% if @bug.solve == false %>
   <%= link_to 'Edit', edit_bug_path(@bug) %> |
-  <%= link_to "Solve", solve_path(@bug), method: :put %>
+  <!--<%= link_to "Solve", solve_path(@bug) %> |-->
+  <%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %>
 <% end %>
 </p>

@@ -1,5 +1,7 @@
 <h1>Edit Project</h1>
 
-<%= render 'form', project: @project %>
+<!--The partial form will be rendered-->
+<%= render "form", project: @project %>
 
-<%= link_to "Back", project_path(@project) %>
+<!--Link to return to all projects-->
+<%= link_to "Return", project_path(@project) %>

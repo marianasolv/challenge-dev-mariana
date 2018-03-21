@@ -2,20 +2,25 @@
 
 <%= form_for @user do |f| %>
 
-<!--List and show all error messages-->
+<!--List and show all form's error messages-->
 <%= render 'error_messages' %>
 
 <!--Form for editing-->
-<div class="field">
-	<%= f.text_field :name, placeholder: "name" %>
-</div>
+<ul class="form-style-1">
+	<li>
+		<%= f.label :name, 'Name' %>
+		<%= f.text_field :name, placeholder: "What's your name?" %>
+	</li>
 
-<div class="field">
-	<%= f.email_field :email, placeholder: "email address" %>
-</div>
+	<li>
+		<%= f.label :name, 'Name' %>
+		<%= f.email_field :email, placeholder: "What's your e-mail address?" %>
+	</li>
 
-<div class="actions"><%= f.submit %></div>
+<li><%= f.submit 'Submit', class: 'submit-bnt' %></li>
+</ul>
 
 <% end %>
 
+<!--Link to return to account page-->
 <%= link_to "Cancel", user_path(@user) %>

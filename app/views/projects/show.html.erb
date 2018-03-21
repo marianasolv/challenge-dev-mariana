@@ -1,3 +1,4 @@
+<!--Show all project's attributes-->
 <h1><%= @project.name %></h1>
 
 <p>Description: <%= @project.description %></p>
@@ -5,6 +6,7 @@
 <p>Start date: <%= @project.start_date %></p>
 <p>Created by: <%= User.find_by(id: @project.user_id).name %></p><br>
 
+<!--Links to edit/delete the project or return to all projects-->
 <p>
   <%= link_to "Edit", edit_project_path(@project) %> |
   <%= link_to 'Delete', project_path(@project), method: :delete, data:{ confirm: 'Are you sure?'} %> | 

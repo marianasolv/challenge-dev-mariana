@@ -1,7 +1,9 @@
+<!--Shows the current user name and email address-->
 <h1>Hello, <%= @user.name %> </h1>
 
 <p>Email address: <%= @user.email %></p>
 
+<!--Links to edit/delete account (only name and email) and to home page-->
 <p>
   <%= link_to "Edit Account", edit_user_path(@user) %> |
   <%= link_to 'Delete', user_path(@user), method: :delete, data:{ confirm: 'Are you sure?'} %> |

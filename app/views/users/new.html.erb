@@ -1,7 +1,10 @@
+<!--Form for login-->
 <div class="login-page">
   <div class="form">
 
     <%= form_for @user do |f| %>
+    
+    <!--List and show all form's error messages-->
     <%= render 'error_messages' %>
 
       <%= f.text_field :name, placeholder: "name", class: 'field'%>
@@ -13,7 +16,11 @@
       <%= f.password_field :password_confirmation, placeholder: "confirm password", class: 'field' %>
 
       <%= f.submit "Sign up", class: 'form-bnt' %>
+
+      <!--Link to signup page-->
       <p class="message">Already registered? <%= link_to "Log In", login_path %> </p>
+
     <% end %>
+    
   </div>
 </div>

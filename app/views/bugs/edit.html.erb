@@ -1,6 +1,7 @@
 <h1>Editing Bug</h1>
 
-<%= render 'form', bug: @bug %>
+<!--The partial form will be rendered-->
+<%= render "form", bug: @bug %>
 
-<%= link_to 'Show', @bug %> |
-<%= link_to 'Back', bugs_path %>
+<!--Link to return to all bugs-->
+<%= link_to "Return", bugs_path %>

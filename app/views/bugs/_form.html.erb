@@ -1,6 +1,6 @@
+<%= form_for @bug do |f| %>
 
-<%= form_for(bug) do |f| %>
-
+<!--List and show all error messages-->
 <% if @bug.errors.any? %>
 <div class="error_messages">
   <h2>Form is invalid</h2>
@@ -12,25 +12,31 @@
 </div>
 <% end %>
 
-<div class="field">
-  <%= f.text_field :name, placeholder: "name" %>
-</div>
+<!--Form's field-->
+<ul class="form-style-1">
 
-<div class="field">
-  <%= f.text_field :bug_type, placeholder: "type" %>
-</div>
+  <li>
+    <%= f.label :name, 'Bug Name' %>
+    <%= f.text_field :name, placeholder: "What the name of this bug?" %>
+  </li>
 
-<div class="field">
-  <%= f.text_area :description, placeholder: "description" %>
-</div>
+  <li>
+    <%= f.label :bug_type, 'Bug Type' %>
+    <%= f.text_field :bug_type, placeholder: "What is this bug's type?" %>
+  </li>
 
-<div class="field">
-  <% @current_user = User.find session[:user_id] %>
-  <%= f.select :project_id, Project.where(user_id: @current_user.id).collect {|p| [ p.name, p.id] }, prompt: 'Select a project' %>
-</div>
+  <li>
+    <%= f.label :description, 'Bug Description' %>
+    <%= f.text_area :description, placeholder: "What this bug cause?" %>
+  </li>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
+  <li>
+    <%= f.label :project_id, 'Project' %>
+    <% @current_user = User.find session[:user_id] %>
+    <%= f.select :project_id, Project.where(user_id: @current_user.id).collect {|p| [ p.name, p.id] }, prompt: 'From what project is this bug?' %>
+  </li>
+
+  <li><%= f.submit 'Submit', class: 'submit-bnt' %></li>
+</ul>
 
 <% end %>
