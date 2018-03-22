@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(allowed_params_create)
 		if @user.save
-			redirect_to root_url, notice: 'Thank you for signing up!'
+			redirect_to root_url, notice: "Thank you for signing up!"
 		else
 			render :new
 		end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(allowed_params_edit)
-			redirect_to @user, notice: 'Account has been updated!'
+			redirect_to @user, notice: "Account has been updated!"
 		else
 			render :edit
 		end

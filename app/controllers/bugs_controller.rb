@@ -39,13 +39,13 @@ class BugsController < ApplicationController
       message << "*Description:* ```#{@bug.description}``` \n"
 
       # Create a new Slack notifier
-      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
-      channel: 'channel-test'
+      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
+      channel: "desafio-dev-mariana"
 
       # Send the message to Slack
       notifier.ping message
 
-      flash.now.alert = 'Bug created successfully!'
+      flash.now.alert = "Bug created successfully!"
       redirect_to @bug
     else
       render :new
@@ -66,7 +66,7 @@ class BugsController < ApplicationController
   def update
     @bug = Bug.find(params[:id])
     if @bug.update_attributes(bug_params)
-      flash.now.alert = 'Bug has been updated!'
+      flash.now.alert = "Bug has been updated!"
       redirect_to @bug
     else
       render :edit
@@ -94,13 +94,13 @@ class BugsController < ApplicationController
       message << "*Description:* ```#{@bug.description}``` \n"
 
       # Create a new Slack notifier
-      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
-      channel: 'channel-test'
+      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
+      channel: "desafio-dev-mariana"
 
       # Send the message to Slack
       notifier.ping message
 
-      redirect_to @bug, notice: 'Bug has been solved!'
+      redirect_to @bug, notice: "Bug has been solved!"
     else
       redirect_to bugs_path, notice: "Couldn't solve bug" 
     end

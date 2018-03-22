@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
 
-      redirect_to home_url, notice: 'Logged in!'
+      redirect_to home_url, notice: "Logged in!"
   	else
-  		flash.now.alert = 'Invalid email or password'
+  		flash.now.alert = "Invalid email or password"
   		render :new #render the login template again (new in sessions)
   	end
   end
@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
   # Logout of a session
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Logged out!'
+    redirect_to root_url, notice: "Logged out!"
   end
 end
