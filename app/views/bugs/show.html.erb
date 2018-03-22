@@ -1,5 +1,5 @@
 <!--Show all bug's attributes-->
-<p>Name: <%= @bug.name %></p>
+<h1><%= @bug.name %></h1>
 
 <p>Type: <%= @bug.bug_type %></p>
 
@@ -13,11 +13,11 @@
 
 <!--Links to edit/delete/solve the bug or return to all bugs-->
 <p>
-<%= link_to 'Back', bugs_path %> |
+<%= link_to 'Back', bugs_path %> | 
+<%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %>
 <!--Only shows edit/solve/delete if a bug is not yet solved-->
 <% if @bug.solve == false %>
   <%= link_to 'Edit', edit_bug_path(@bug) %> |
-  <%= link_to "Solve", solve_path(@bug), method: :put %> |
-  <%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %>
+  <%= link_to "Solve", solve_path(@bug), method: :put %>
 <% end %>
 </p>

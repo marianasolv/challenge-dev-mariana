@@ -1,5 +1,10 @@
 <h1>Bugs</h1>
 
+<!--Check if table is empty-->
+<% if Bug.exists? %>
+
+<p>Here is all bugs that you created.</p> 
+
 <!--Table to display all bugs (created by the current user in a session) and it's attributes-->
 <table>
   <thead>
@@ -20,7 +25,7 @@
         <td><%= link_to bug.name, bug %></td>
         <td><%= bug.bug_type %></td>
         <td><%= bug.description %></td>
-        <td><%= bug.solve %></td>
+        <td><%= bool_to_str(bug.solve) %></td>
         <td><%= Project.find_by(id: bug.project_id).name %></td>
         <td><%= User.find_by(id: bug.user_id).name %></td>
       </tr>
@@ -28,7 +33,11 @@
   </tbody>
 </table>
 
-<br>
+<% else %>
+
+<p>There's no bug yet. Create a new one!</p>
+
+<% end %>
 
 <!--Links to return to home page or create a new bug-->
 <p>

@@ -1,7 +1,9 @@
 <!--Shows the current user name and email address-->
-<h1>Hello, <%= @user.name %> </h1>
+<h1>Hello, <%= @user.name %>!</h1>
 
-<p>Email address: <%= @user.email %></p>
+<div class = "account">
+<h2>Email address:</h2> <p><%= @user.email %></p>
+</div>
 
 <!--Links to edit/delete account (only name and email) and to home page-->
 <p>

@@ -1,5 +1,9 @@
 <h1>Projects</h1>
 
+<!--Check if table is empty-->
+<% if Project.exists? %>
+
+<p>Here is all projects that you created.</p>
 <!--Table to display all projects (created by the current user in a session) and it's attributes-->
 <table>
   <thead>
@@ -26,7 +30,11 @@
 	</tbody>
 </table>
 
-<br>
+<% else %>
+
+<p>There's no project yet. Create a new one!</p>
+
+<% end %>
 
 <!--Links to return to home page or create a new project-->
 <p>
