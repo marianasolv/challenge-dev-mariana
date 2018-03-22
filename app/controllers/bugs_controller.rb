@@ -1,8 +1,17 @@
 class BugsController < ApplicationController
+  before_action :authenticate_user
 
   # GET /bugs
   def index
     @bugs = Bug.all
+
+    # Recover the user in the current session
+    @current_user = User.find session[:user_id]
+
+    current_user_id = @current_user.id
+
+    # Only show the user's projects
+    @bugs = Bug.where(user_id: current_user_id)
   end
 
   # GET /bugs/new

@@ -12,12 +12,12 @@
 <p>Solve: <%= bool_to_str(@bug.solve) %></p>
 
 <!--Links to edit/delete/solve the bug or return to all bugs-->
-<p>
-<%= link_to 'Back', bugs_path %> | 
-<%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %>
+<button class="button"><%= link_to 'All Bugs', bugs_path %></button>
+
 <!--Only shows edit/solve/delete if a bug is not yet solved-->
 <% if @bug.solve == false %>
-  <%= link_to 'Edit', edit_bug_path(@bug) %> |
-  <%= link_to "Solve", solve_path(@bug), method: :put %>
+  <button class="button"><%= link_to 'Edit', edit_bug_path(@bug) %></button>
+  <button class="button"><%= link_to "Solve", solve_path(@bug), method: :put %></button>
 <% end %>
-</p>
+
+<button class="button"><%= link_to 'Delete', bug_path(@bug), method: :delete, data:{ confirm: 'Are you sure?'} %></button>

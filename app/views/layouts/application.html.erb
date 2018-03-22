@@ -12,17 +12,35 @@
 
 <body>
 
-	<% if logged_in? %>
-		<nav>
-			<div class = 'logout-bnt'><%= link_to 'Logout', logout_path%></div>
-		</nav>
-	<% else %>
-		<header>Project Managment Application</header>
-	<% end %>
+<div class="header">
+  <%= render 'layouts/flash_messages' if !flash.empty? %>
+</div>
 
-	<%= render 'layouts/flash_messages' if !flash.empty? %>
+<div class="main">
+	<div class="content">
+		<div class="topnav">
+			<% if logged_in? %>
+			<ul>
+					<li><%= link_to 'Home', home_path%></li>
+					<li><%= link_to 'Projects', projects_path%></i>
+					<li><%= link_to 'Bugs', bugs_path%></li>
+					<li>
+						<%@current_user = User.find session[:user_id]%>
+						<%= link_to 'Manage account', user_path(@current_user.id)%>
+					</li>
+					<li id="logout"><%= link_to 'Logout', logout_path%></li>
+			</ul>
+			<% else %>
+				<h1>Project Managment</h1>
+			<% end %>
+		</div>
 
-<%= yield %>
+		<div class="slider"></div>
+		<div class="information">
+			<%= yield %>
+		</div>
+	</div>
+</div>
 
 </body>
 

@@ -1,7 +1,9 @@
 <h1>Projects</h1>
 
-<!--Check if table is empty-->
-<% if Project.exists? %>
+<!--Check if the current user has any records-->
+<% @current_user = User.find session[:user_id]%>
+
+<% if Project.where(user_id: @current_user.id).any? %>
 
 <p>Here is all projects that you created.</p>
 <!--Table to display all projects (created by the current user in a session) and it's attributes-->
@@ -12,7 +14,7 @@
       <th>Description</th>
       <th>Budget</th>
       <th>Start Date</th>
-      <th>Created by</th>
+      <th>Actions</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -20,11 +22,13 @@
   	<tbody>
 	<% @projects.each do |project| %>
 		<tr>
-			<td><%= link_to project.name, project %></td>
+			<td><%= project.name %></td>
 			<td><%= project.description %></td>
 			<td><%= project.budget %></td>
 			<td><%= project.start_date %></td>
-			<td><%= User.find_by(id: project.user_id).name %></td>
+			<td>
+        <span><i class="fa fa-search"></i><%= link_to "View", project%></span>
+      </td>
 		</tr>
 	<% end %>
 	</tbody>
@@ -37,7 +41,4 @@
 <% end %>
 
 <!--Links to return to home page or create a new project-->
-<p>
-  <%= link_to "Home", home_path %> |
-  <%= link_to 'New Project', new_project_path %>
-</p>
+<button class="button"><%= link_to 'New Project', new_project_path %></button>
